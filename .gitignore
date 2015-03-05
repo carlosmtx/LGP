@@ -15,3 +15,10 @@ build/
 local.properties
 proguard/
 *.log
+bin/
+gen/
+.gradle/
+build/
+local.properties
+proguard/
+*.log
