@@ -3,11 +3,14 @@ package com.lgp.lgp;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
@@ -15,6 +18,14 @@ import android.widget.Toast;
 import com.metaio.sdk.ARELActivity;
 import com.metaio.sdk.MetaioDebug;
 import com.metaio.tools.io.AssetsManager;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 
 public class MainActivity extends Activity
 {
@@ -74,6 +85,10 @@ public class MainActivity extends Activity
         {
             if (result)
             {
+                File dir = Environment.getExternalStorageDirectory();
+                File yourFile = new File(dir, "teste.xml");
+                //Log.d("test", yourFile.getAbsolutePath());
+
                 // Start AREL Activity on success
                 final File arelConfigFilePath = AssetsManager.getAssetPathAsFile(getApplicationContext(), "AREL/index.xml");
                 MetaioDebug.log("AREL config to be passed to intent: "+arelConfigFilePath.getPath());

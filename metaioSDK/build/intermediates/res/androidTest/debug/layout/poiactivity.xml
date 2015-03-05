@@ -9,4 +9,4 @@
         android:layout_height="match_parent"
         class="com.metaio.cloud.plugin.view.POIDetailFragment"
         tools:layout="@layout/poidetaildialog" />
-</FrameLayout><!-- From: file:/C:/Projects/LGP/metaioSDK/res/layout/poiactivity.xml --><!-- From: file:/C:/Projects/LGP/metaioSDK/build/intermediates/bundles/debug/res/layout/poiactivity.xml -->
+</FrameLayout><!-- From: file:/A:/Documentos/AndroidWorkspace/LGP/LGP/metaioSDK/res/layout/poiactivity.xml --><!-- From: file:/A:/Documentos/AndroidWorkspace/LGP/LGP/metaioSDK/build/intermediates/bundles/debug/res/layout/poiactivity.xml -->
