@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="/storage/emulated/0/lgp/info.js"></script>
 		<script type="text/javascript" src="arel.js"></script>
 		<script type="text/javascript" src="logic.js"></script>
 		<link rel="stylesheet" type="text/css" href="template.css">
@@ -10,6 +11,11 @@
 		<title>AREL template</title>
 	</head>
 	<body>
-		<div id="info">Please point your device to the earth pattern.<br /><br /><img src="../earthTarget.jpg" /></div>
+		<div id="info">Please point your device to the earth pattern.<br /><br /><img src="/storage/emulated/0/lgp/earth.jpg" /></div>
+        <h1 id="test"></h1>
+            <script>
+                document.getElementById('test').innerHTML = json['nome'];
+            </script>
+
 	</body>
 </html>

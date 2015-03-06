@@ -5,6 +5,8 @@ arel.sceneReady(function()
 {
 	console.log("sceneReady");
 
+	document.getElementById('info').style.display = "block";
+
 	//set a listener to tracking to get information about when the image is tracked
 	arel.Events.setListener(arel.Scene, trackingHandler);
 
@@ -22,7 +24,7 @@ arel.sceneReady(function()
 	Rotation.setFromEulerAngleDegrees(new arel.Vector3D(90.0, 0.0, 0.0));
 
 	// get earth model reference
-	earth = arel.Object.Model3D.create("1", "../Earth.zip");
+	earth = arel.Object.Model3D.create("1", "/storage/emulated/0/lgp/Earth.zip");
 	earth.setVisibility(true);
 	earth.setCoordinateSystemID(1);
 	earth.setScale(Scale);
@@ -48,7 +50,7 @@ arel.sceneReady(function()
 	}
 
 	// get earth occlusion model reference
-	earthOcclusion = arel.Object.Model3D.create("2", "../Earth_Occlusion.zip");
+	earthOcclusion = arel.Object.Model3D.create("2", "/storage/emulated/0/lgp/Earth_Occlusion.zip");
 	earthOcclusion.setVisibility(true);
 	earthOcclusion.setCoordinateSystemID(1);
 	earthOcclusion.setScale(Scale);
@@ -58,7 +60,7 @@ arel.sceneReady(function()
 	earthOcclusion.setPickingEnabled(true);
 
 	// get earth indicators model reference
-	earthIndicators = arel.Object.Model3D.create("3", "../EarthIndicators.zip");
+	earthIndicators = arel.Object.Model3D.create("3", "/storage/emulated/0/lgp/EarthIndicators.zip");
 	earthIndicators.setVisibility(true);
 	earthIndicators.setCoordinateSystemID(1);
 	earthIndicators.setScale(Scale);
@@ -69,6 +71,7 @@ arel.sceneReady(function()
 
 function trackingHandler(type, param)
 {
+
 	//check if there is tracking information available
 	if (param[0] !== undefined)
 	{

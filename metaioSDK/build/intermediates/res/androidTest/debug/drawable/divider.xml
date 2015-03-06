@@ -2,4 +2,4 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
     <size android:height="1dip" />
     <solid android:color="@color/metaiocolor" />
-</shape><!-- From: file:/A:/Documentos/AndroidWorkspace/LGP/LGP/metaioSDK/res/drawable/divider.xml --><!-- From: file:/A:/Documentos/AndroidWorkspace/LGP/LGP/metaioSDK/build/intermediates/bundles/debug/res/drawable/divider.xml -->
+</shape><!-- From: file:/C:/Users/ricardo/Documents/LGP/metaioSDK/res/drawable/divider.xml --><!-- From: file:/C:/Users/ricardo/Documents/LGP/metaioSDK/build/intermediates/bundles/debug/res/drawable/divider.xml -->
