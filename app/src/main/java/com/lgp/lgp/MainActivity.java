@@ -86,8 +86,6 @@ public class MainActivity extends Activity
             if (result)
             {
                 File dir = Environment.getExternalStorageDirectory();
-                File yourFile = new File(dir, "teste.xml");
-                //Log.d("test", yourFile.getAbsolutePath());
 
                 // Start AREL Activity on success
                 final File arelConfigFilePath = AssetsManager.getAssetPathAsFile(getApplicationContext(), "AREL/index.xml");
