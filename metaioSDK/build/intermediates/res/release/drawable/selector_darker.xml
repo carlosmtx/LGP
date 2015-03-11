@@ -9,4 +9,4 @@
     <item android:drawable="@color/transparent" android:state_focused="true"/>
     <item android:drawable="@color/transparent" android:state_selected="false"/>
     <item android:drawable="@color/transparent"/>
-</selector><!-- From: file:/C:/Users/ricardo/Documents/LGP/metaioSDK/res/drawable/selector_darker.xml -->
+</selector><!-- From: file:/A:/Documentos/AndroidWorkspace/LGP/LGP/metaioSDK/res/drawable/selector_darker.xml -->

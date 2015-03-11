@@ -8,7 +8,7 @@ Projeto de Realidade Aumentada
 File > Import Project > Escolher Pasta LGP
 
 
-Criar um pasta lgp na root da memória do dispositivo, fazer isto enquanto o servidor não gere esta tarefa
+Copiar a pasta que está dentro do projecto com nome "lgp" para a raiz do dispositivo.
 
 
 Correr!
