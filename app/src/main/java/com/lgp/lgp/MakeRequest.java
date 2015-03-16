@@ -8,19 +8,10 @@ import android.os.AsyncTask;
 // class that will handle the asynchronous request
 public class MakeRequest extends AsyncTask<String, Integer, Double> {
 
-    /*
-    @Override
-    protected Double doInBackground(String... params) {
-        // TODO Auto-generated method stub
-        new GetInitialData().postData(params[0]);
-        return null;
-    }
-    */
-
     @Override
     protected Double doInBackground(String... params) {
 
-        new GetInitialData().postData(params[0]);
+        //new ManageData().syncData(params[0]);
         return null;
     }
 
