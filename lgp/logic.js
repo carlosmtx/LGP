@@ -1,11 +1,9 @@
 var earthOpened = false;
-var earth, earthOcclusion, earthIndicators;
+var earth, earthOcclusion, earthIndicators, metaioMan;
 
 arel.sceneReady(function()
 {
 	console.log("sceneReady");
-
-	document.getElementById('info').style.display = "block";
 
 	//set a listener to tracking to get information about when the image is tracked
 	arel.Events.setListener(arel.Scene, trackingHandler);
@@ -31,6 +29,24 @@ arel.sceneReady(function()
 	earth.setRotation(Rotation);
 	arel.Scene.addObject(earth);
 	earth.setPickingEnabled(true);
+	
+	
+	// get metaioman model reference
+	
+	
+	metaioMan = arel.Object.Model3D.create("4", "/storage/emulated/0/lgp/metaioman.md2");
+	metaioMan.setVisibility(true);
+	metaioMan.setCoordinateSystemID(2);
+	metaioMan.setScale(Scale);
+	arel.Scene.addObject(metaioMan);
+	
+	/*
+	metaioMan = arel.Object.Model3D.createFromMovie("4", "/storage/emulated/0/lgp/video.3gp");
+	metaioMan.setVisibility(true);
+	metaioMan.setCoordinateSystemID(2);
+	arel.Scene.addObject(metaioMan);
+	*/
+	
 
 	// add a handler for the onTouchStarted event
 	earth.onTouchStarted = function( param )
@@ -87,3 +103,8 @@ function trackingHandler(type, param)
 		}
 	}
 };
+
+function clickHandler()
+{
+	arel.Scene.setTrackingConfiguration("TrackingData_MarkerlessFast.xml");
+}
