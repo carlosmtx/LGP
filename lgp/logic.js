@@ -3,7 +3,33 @@ var earth, earthOcclusion, earthIndicators, metaioMan;
 
 arel.sceneReady(function()
 {
+	
+
+
 	console.log("sceneReady");
+
+
+	 var socketInfo;
+
+        var div = document.getElementById('socketTest');
+        div.innerHTML = "div encontrado";
+
+        // Host we are connecting to
+                var host = 'localhost:4040';
+                // Port we are connecting on
+                var port = 4444;
+
+                socket= new WebSocket(host);
+                socket.onopen= function() {
+                    div.innerHTML = "Open    ";
+                };
+                socket.onmessage= function(s) {
+                    div.innerHTML = div.innerHTML + s;
+                };
+
+
+
+
 
 	//set a listener to tracking to get information about when the image is tracked
 	arel.Events.setListener(arel.Scene, trackingHandler);
