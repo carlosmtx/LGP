@@ -88,7 +88,7 @@ public class MainActivity extends Activity
                 File dir = Environment.getExternalStorageDirectory();
 
                 // Start AREL Activity on success
-                final File arelConfigFilePath = AssetsManager.getAssetPathAsFile(getApplicationContext(), "AREL/index.xml");
+                final File arelConfigFilePath = new File(dir.getAbsolutePath() + "/lgp/index.xml");
                 MetaioDebug.log("AREL config to be passed to intent: "+arelConfigFilePath.getPath());
                 Intent intent = new Intent(getApplicationContext(), ARELViewActivity.class);
                 intent.putExtra(getPackageName()+ARELActivity.INTENT_EXTRA_AREL_SCENE, arelConfigFilePath);
