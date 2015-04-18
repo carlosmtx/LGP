@@ -11,7 +11,7 @@ public class ARELViewActivity extends ARELActivity
     @Override
     protected int getGUILayout()
     {
-        //new MakeRequest().execute("http://192.168.1.6/lgp/teste.xml");
+        new MakeRequest().execute("http://192.168.1.6/lgp/teste.xml");
         // Attaching layout to the activity
         return R.layout.template;
     }

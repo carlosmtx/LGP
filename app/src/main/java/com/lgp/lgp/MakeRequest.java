@@ -15,7 +15,7 @@ public class MakeRequest extends AsyncTask<String, Integer, Double> {
     @Override
     protected Double doInBackground(String... params) {
 
-       new ManageData().listServerFiles();
+       new ManageData().startDownload();
        return null;
     }
 

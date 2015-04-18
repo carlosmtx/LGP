@@ -1,6 +1,7 @@
 package com.lgp.lgp;
 
 
+import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Log;
 
@@ -16,7 +17,9 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -30,9 +33,8 @@ import java.util.List;
  */
 public class ManageData {
 
-    private final String LIST_FILES_URL = "http://178.62.167.215/channel/list/files";
-    // get request to http://178.62.167.215/file?file=fileID
-    private final String GET_FILE_URL = "http://178.62.167.215/file";
+    private final String GET_ZIP_URL = "http://178.62.167.215/channel/canal1/current";
+    private final String SAVEDIR = Environment.getExternalStorageDirectory() + "/lgp";
 
     private final String CHANNEL_ID = "55022049a8ff87c7528b4568";
 
@@ -69,6 +71,12 @@ public class ManageData {
 
     }
 
+    // Starts the zip download
+    public void startDownload() {
+        new DownloadFileAsync().execute(GET_ZIP_URL);
+    }
+
+    /*
     public ArrayList<String> listServerFiles() {
         HttpClient httpClient = new DefaultHttpClient();
         List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -104,8 +112,50 @@ public class ManageData {
 
         return null;
     }
+    */
+
+    // Downloads the zip file asynchronously
+    private class DownloadFileAsync extends AsyncTask<String, String, String> {
+
+
+        @Override
+        // Download the zip file
+        protected String doInBackground(String... params) {
+
+            HttpClient httpClient = new DefaultHttpClient();
+            List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+            parameters.add(new BasicNameValuePair("as", "zip"));
+            try {
+                URI uri = new URI(params[0] + "?" + URLEncodedUtils.format(parameters, "utf-8"));
+                HttpUriRequest request = new HttpGet(uri);
+                HttpResponse response = httpClient.execute(request);
+                InputStream is = response.getEntity().getContent();
+                FileOutputStream fos = new FileOutputStream(new File(Environment.getExternalStorageDirectory() + "/lgp", "current.zip"));
+
+                int read = 0;
+                byte[] buffer = new byte[32768];
+                while( (read = is.read(buffer)) > 0) {
+                    fos.write(buffer, 0, read);
+                }
+                fos.close();
+                is.close();
+
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+
+    }
 
 }
+
+
 
 
 
