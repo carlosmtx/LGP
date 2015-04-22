@@ -16,7 +16,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,7 +30,11 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
 
 /**
  * Created by ricardo on 05/03/2015.
@@ -46,77 +54,61 @@ public class ManageData {
     public void syncData () {
 
     }
-
-    // Checks if the folder is already created(true-there is folder, false-there is no folder)
-    private boolean checkFolder() {
-        return false;
-    }
-
-    // Returns the file's names that need to be removed from device
-    private String[] filesToRemove() {
-        return null;
-    }
-
-    // Returns file's id that need to be removed
-    private String[] filesToDownload() {
-        return null;
-    }
-
-    // Removes a file from device's memory
-    private void removeFile(String location) {
-    }
-
-    // Saves file on default directory
-    private void saveFile(String name) {
-
-    }
-
     // Starts the zip download
     public void startDownload() {
         new DownloadFileAsync().execute(GET_ZIP_URL);
     }
 
-    /*
-    public ArrayList<String> listServerFiles() {
-        HttpClient httpClient = new DefaultHttpClient();
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("channel", CHANNEL_ID));
+    // Unpacks a zip file
+    public boolean unpackZip(String destPath, String zipPath) {
+        byte[] buffer = new byte[1024];
+
+        Log.i("pato", zipPath);
+
         try {
-            URI uri = new URI(LIST_FILES_URL + "?" + URLEncodedUtils.format(params, "utf-8"));
-            HttpUriRequest request = new HttpGet(uri);
-            HttpResponse response = httpClient.execute(request);
-            Log.d("teste", EntityUtils.toString(response.getEntity()));
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
+            // Open the zip file
+            ZipFile zipFile = new ZipFile(zipPath);
+            Enumeration<?> enu = zipFile.entries();
+            while (enu.hasMoreElements()) {
+                ZipEntry zipEntry = (ZipEntry) enu.nextElement();
+
+                String name = zipEntry.getName();
+                Log.i("names", destPath + File.separator + name);
+
+                // Do we need to create a directory ?
+                File file = new File(destPath + File.separator + name);
+                if (name.endsWith("/")) {
+                    file.mkdirs();
+                    continue;
+                }
+
+                File parent = file.getParentFile();
+                if (parent != null) {
+                    parent.mkdirs();
+                }
+
+                // Extract the file
+                InputStream is = zipFile.getInputStream(zipEntry);
+                FileOutputStream fos = new FileOutputStream(file);
+                byte[] bytes = new byte[1024];
+                int length;
+                while ((length = is.read(bytes)) >= 0) {
+                    fos.write(bytes, 0, length);
+                }
+                is.close();
+                fos.close();
+
+            }
+            zipFile.close();
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
-
-        return null;
+        return true;
     }
-
-    // Returns a list of names of device's files
-    public ArrayList<File> listDeviceFiles() {
-        File srcDir = new File(Environment.getExternalStorageDirectory() + "/lgp");
-        if(srcDir.isDirectory()) {
-            ArrayList<File> filteredFiles = new ArrayList<>();
-            File[] allFiles = srcDir.listFiles();
-            for(File file:allFiles) {
-                if(!file.isDirectory())
-                    filteredFiles.add(file);
-            }
-            return filteredFiles;
-        }
-
-        return null;
-    }
-    */
 
     // Downloads the zip file asynchronously
     private class DownloadFileAsync extends AsyncTask<String, String, String> {
-
 
         @Override
         // Download the zip file
@@ -150,7 +142,12 @@ public class ManageData {
             return null;
         }
 
-
+        @Override
+        protected void onPostExecute(String s) {
+            if(new ManageData().unpackZip(Environment.getExternalStorageDirectory() + "/lgp", Environment.getExternalStorageDirectory() + "/lgp/current.zip"))
+                Log.i("teste", "Ficheiro extraido com sucesso");
+            else Log.i("teste", "Erro na extração do ficheiro");
+        }
     }
 
 }
