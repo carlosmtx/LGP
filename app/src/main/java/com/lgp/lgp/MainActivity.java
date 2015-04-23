@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.Gravity;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.metaio.sdk.ARELActivity;
@@ -34,6 +35,8 @@ public class MainActivity extends Activity
      * Task that will extract all the assets
      */
     private AssetsExtracter mTask;
+    public ProgressBar bar;
+    public Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -42,10 +45,10 @@ public class MainActivity extends Activity
 
         setContentView(R.layout.activity_main);
         // Enable metaio SDK debug log messages based on build configuration
-        MetaioDebug.enableLogging(BuildConfig.DEBUG);
+        //MetaioDebug.enableLogging(BuildConfig.DEBUG);
 
         // extract all the assets
-        mTask = new AssetsExtracter();
+        mTask = new AssetsExtracter(MainActivity.this);
         mTask.execute(0);
 
     }
@@ -56,6 +59,12 @@ public class MainActivity extends Activity
      */
     private class AssetsExtracter extends AsyncTask<Integer, Integer, Boolean>
     {
+
+        private MainActivity activity;
+
+        public AssetsExtracter(MainActivity activity) {
+            this.activity = activity;
+        }
 
         @Override
         protected void onPreExecute()
@@ -92,7 +101,23 @@ public class MainActivity extends Activity
                 MetaioDebug.log("AREL config to be passed to intent: "+arelConfigFilePath.getPath());
                 Intent intent = new Intent(getApplicationContext(), ARELViewActivity.class);
                 intent.putExtra(getPackageName()+ARELActivity.INTENT_EXTRA_AREL_SCENE, arelConfigFilePath);
-                startActivity(intent);
+
+                ProgressBar bar = (ProgressBar) findViewById(R.id.progressExtraction);
+
+                this.activity.bar = bar;
+                this.activity.intent = intent;
+
+                //Download Files and Extract them
+                new MakeRequest("http://192.168.1.6/lgp/teste.xml", this.activity).execute();
+
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                this.activity.startActivity(this.activity.intent);
+
             }
             else
             {

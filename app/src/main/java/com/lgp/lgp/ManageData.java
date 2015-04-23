@@ -1,9 +1,12 @@
 package com.lgp.lgp;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.ProgressBar;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -41,13 +44,14 @@ import java.util.zip.ZipInputStream;
  */
 public class ManageData {
 
+    private MainActivity activity;
     private final String GET_ZIP_URL = "http://178.62.167.215/channel/canal1/current";
     private final String SAVEDIR = Environment.getExternalStorageDirectory() + "/lgp";
 
     private final String CHANNEL_ID = "55022049a8ff87c7528b4568";
 
-    public ManageData() {
-
+    public ManageData(MainActivity activity) {
+        this.activity = activity;
     }
 
     // This method will make a request to API and return the files ids
@@ -56,24 +60,25 @@ public class ManageData {
     }
     // Starts the zip download
     public void startDownload() {
-        new DownloadFileAsync().execute(GET_ZIP_URL);
+        new DownloadFileAsync(activity).execute(GET_ZIP_URL);
     }
 
     // Unpacks a zip file
     public boolean unpackZip(String destPath, String zipPath) {
         byte[] buffer = new byte[1024];
 
-        Log.i("pato", zipPath);
-
         try {
             // Open the zip file
             ZipFile zipFile = new ZipFile(zipPath);
+            int totalEntries = zipFile.size();
+            int processedEntries = 0;
             Enumeration<?> enu = zipFile.entries();
             while (enu.hasMoreElements()) {
+
+                processedEntries++;
                 ZipEntry zipEntry = (ZipEntry) enu.nextElement();
 
                 String name = zipEntry.getName();
-                Log.i("names", destPath + File.separator + name);
 
                 // Do we need to create a directory ?
                 File file = new File(destPath + File.separator + name);
@@ -98,6 +103,8 @@ public class ManageData {
                 is.close();
                 fos.close();
 
+                updateBar(processedEntries, totalEntries);
+
             }
             zipFile.close();
         } catch (IOException e) {
@@ -107,8 +114,20 @@ public class ManageData {
         return true;
     }
 
+    // updates progress bar
+    private void updateBar(int completed, int total) {
+        int percentage = (int)(((double)completed/(double)total) * 100);
+        this.activity.bar.setProgress(percentage);
+    }
+
     // Downloads the zip file asynchronously
     private class DownloadFileAsync extends AsyncTask<String, String, String> {
+
+        private MainActivity activity;
+
+        public DownloadFileAsync(MainActivity activity) {
+            this.activity = activity;
+        }
 
         @Override
         // Download the zip file
@@ -144,9 +163,11 @@ public class ManageData {
 
         @Override
         protected void onPostExecute(String s) {
-            if(new ManageData().unpackZip(Environment.getExternalStorageDirectory() + "/lgp", Environment.getExternalStorageDirectory() + "/lgp/current.zip"))
+            if(new ManageData(this.activity).unpackZip(Environment.getExternalStorageDirectory() + "/lgp", Environment.getExternalStorageDirectory() + "/lgp/current.zip"))
                 Log.i("teste", "Ficheiro extraido com sucesso");
             else Log.i("teste", "Erro na extração do ficheiro");
+
+            //this.activity.startActivity(this.activity.intent);
         }
     }
 

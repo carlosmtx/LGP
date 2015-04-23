@@ -61,6 +61,7 @@ public class ARELActivity extends ARViewActivity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+
 		MetaioDebug.log("ARELActivity.onCreate");
 
 		// create the AREL interpreter and its callback
@@ -73,6 +74,7 @@ public class ARELActivity extends ARViewActivity
 
 		// create AREL WebView
 		mWebView = new WebView(this);
+
 	}
 
 	@Override
