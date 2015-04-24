@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Downloading and extracting content"
+        android:text="Verifying Files..."
         android:id="@+id/textViewInfo"
         android:layout_above="@+id/progressExtraction"
         android:layout_alignLeft="@+id/progressExtraction"
@@ -29,7 +29,7 @@
         android:layout_marginBottom="45dp"
         android:layout_alignRight="@+id/progressExtraction"
         android:layout_alignEnd="@+id/progressExtraction"
-        android:editable="false"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:textSize="20dp" />
 
 </RelativeLayout>
