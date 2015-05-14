@@ -1,17 +1,48 @@
 package com.lgp.lgp;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
-public class login_activity extends ActionBarActivity {
+public class login_activity extends Activity {
+
+    private boolean backPressed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
+
+        // Set login button listener
+        final Button loginButton = (Button) findViewById(R.id.login_button);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get username
+                final EditText usernameText = (EditText) findViewById(R.id.editText_user);
+                final EditText passwordText = (EditText) findViewById(R.id.editText_password);
+
+                String username = usernameText.getText().toString();
+                String password = passwordText.getText().toString();
+
+                if(username.equals("admin") && password.equals("123")) {
+
+                    // Launch menu intent
+                    Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                    startActivity(intent);
+                } else {
+                    // Show toast informing that credentials are wrong
+                    Toast.makeText(getApplicationContext(), "Combinacao user/pin esta errada!", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
     }
 
     @Override
@@ -22,17 +53,13 @@ public class login_activity extends ActionBarActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public void onBackPressed() {
+        if(backPressed == true) {
+            finish();
+        } else {
+            Toast.makeText(getApplicationContext(), "Pressione anterior mais uma vez para sair!", Toast.LENGTH_SHORT).show();
+            backPressed = true;
         }
 
-        return super.onOptionsItemSelected(item);
     }
 }

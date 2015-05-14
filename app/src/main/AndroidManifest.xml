@@ -39,11 +39,18 @@
         <activity
             android:name=".ARELViewActivity"
             android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"
-            android:theme="@style/Theme.FullScreen" >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
             android:name=".login_activity"
-            android:label="@string/title_activity_login_activity">
+            android:label="@string/title_activity_login_activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:noHistory="true">
+        </activity>
+        <activity
+            android:name=".MenuActivity"
+            android:label="@string/title_activity_menu_activity"
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 
