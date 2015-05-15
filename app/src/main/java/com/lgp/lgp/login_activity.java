@@ -38,18 +38,11 @@ public class login_activity extends Activity {
                     startActivity(intent);
                 } else {
                     // Show toast informing that credentials are wrong
-                    Toast.makeText(getApplicationContext(), "Combinacao user/pin esta errada!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Combinacao utilizador/pin esta errada!", Toast.LENGTH_SHORT).show();
 
                 }
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_login_activity, menu);
-        return true;
     }
 
     @Override
