@@ -1,204 +1,268 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:padding="16dp"
-    android:orientation="vertical"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     >
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#ff009788"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
 
-            <android.support.v7.widget.CardView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/cv1"
-                android:layout_marginBottom="20dp"
-                >
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:textSize="23sp"
+                android:textColor="#ffffff"
+                android:text="Bem-vindo,"
+                />
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:id="@+id/rl1">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/Main_account_title"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:textSize="30sp"
-                        android:text="Conta Principal"
-                        android:textColor="#ff009788" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/Main_account_number"
-                        android:layout_below="@+id/Main_account_title"
-                        android:text="00000454231452789" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/Main_account_balance"
-                        android:layout_below="@+id/Main_account_number"
-                        android:layout_marginTop="30dp"
-                        android:textSize="25sp"
-                        android:text="Saldo" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/Main_account_balance_value"
-                        android:layout_below="@+id/Main_account_balance"
-                        android:textSize="22sp"
-                        android:text="4234,45 €" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/button_go"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerInParent="true"
-                        android:textSize="25sp"
-                        android:textStyle="bold"
-                        android:text=">"
-                        android:autoText="false" />
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/cv2"
-                android:layout_marginBottom="20dp"
-                >
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:textSize="23sp"
+                android:textColor="#ffffff"
+                android:text="Rodrigo Santos"
+                />
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:id="@+id/rl2">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/Order_account_title"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:textSize="30sp"
-                        android:text="Conta à ordem"
-                        android:textColor="#ff009788" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/Order_account_number"
-                        android:layout_below="@+id/Order_account_title"
-                        android:text="00000454231452789" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/order_account_balance"
-                        android:layout_below="@+id/Order_account_number"
-                        android:layout_marginTop="30dp"
-                        android:textSize="25sp"
-                        android:text="Saldo" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/order_account_balance_value"
-                        android:layout_below="@+id/order_account_balance"
-                        android:textSize="22sp"
-                        android:text="4234,45 €" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/button_go_1"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerInParent="true"
-                        android:textSize="25sp"
-                        android:textStyle="bold"
-                        android:text=">"
-                        android:autoText="false" />
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/cv3"
-                >
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:id="@+id/rl3">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/Credit_account_title"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:textSize="30sp"
-                        android:text="Cartão de Crédito"
-                        android:textColor="#ff009788" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/Credit_account_number"
-                        android:layout_below="@+id/Credit_account_title"
-                        android:text="0000045423145XXXX" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/Credit_account_balance"
-                        android:layout_below="@+id/Credit_account_number"
-                        android:layout_marginTop="30dp"
-                        android:textSize="25sp"
-                        android:text="Saldo" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/Credit_account_balance_value"
-                        android:layout_below="@+id/Credit_account_balance"
-                        android:textSize="22sp"
-                        android:text="-299,00 €" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/button_go_2"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerInParent="true"
-                        android:textSize="25sp"
-                        android:textStyle="bold"
-                        android:text=">"
-                        android:autoText="false" />
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingTop="7dp"
+                android:textSize="13sp"
+                android:textColor="#ffffff"
+                android:text="Último acesso: 09-03-2015, 22:45"
+                />
         </LinearLayout>
-    </ScrollView>
 
-</LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cv1"
+                    android:layout_marginBottom="20dp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:id="@+id/rl1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/Main_account_title"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true"
+                            android:textSize="30sp"
+                            android:text="Conta Principal"
+                            android:textColor="#ff009788" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/Main_account_number"
+                            android:layout_below="@+id/Main_account_title"
+                            android:text="00000454231452789" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/Main_account_balance"
+                            android:layout_below="@+id/Main_account_number"
+                            android:layout_marginTop="30dp"
+                            android:textSize="25sp"
+                            android:text="Saldo" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/Main_account_balance_value"
+                            android:layout_below="@+id/Main_account_balance"
+                            android:textSize="22sp"
+                            android:text="4234,45 €" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/button_go"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            android:text=">"
+                            android:autoText="false" />
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cv2"
+                    android:layout_marginBottom="20dp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:id="@+id/rl2">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/Order_account_title"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true"
+                            android:textSize="30sp"
+                            android:text="Conta à ordem"
+                            android:textColor="#ff009788" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/Order_account_number"
+                            android:layout_below="@+id/Order_account_title"
+                            android:text="00000454231452789" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/order_account_balance"
+                            android:layout_below="@+id/Order_account_number"
+                            android:layout_marginTop="30dp"
+                            android:textSize="25sp"
+                            android:text="Saldo" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/order_account_balance_value"
+                            android:layout_below="@+id/order_account_balance"
+                            android:textSize="22sp"
+                            android:text="4234,45 €" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/button_go_1"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            android:text=">"
+                            android:autoText="false" />
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cv3"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:id="@+id/rl3">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/Credit_account_title"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true"
+                            android:textSize="30sp"
+                            android:text="Cartão de Crédito"
+                            android:textColor="#ff009788" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/Credit_account_number"
+                            android:layout_below="@+id/Credit_account_title"
+                            android:text="0000045423145XXXX" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/Credit_account_balance"
+                            android:layout_below="@+id/Credit_account_number"
+                            android:layout_marginTop="30dp"
+                            android:textSize="25sp"
+                            android:text="Saldo" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/Credit_account_balance_value"
+                            android:layout_below="@+id/Credit_account_balance"
+                            android:textSize="22sp"
+                            android:text="-299,00 €" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/button_go_2"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            android:text=">"
+                            android:autoText="false" />
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ar_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="85dp"
+        fab:fab_icon="@drawable/ic_fab_star"
+        fab:fab_colorNormal="#17fffd"
+        fab:fab_colorPressed="#17fffd"
+
+        />
+
+</FrameLayout>

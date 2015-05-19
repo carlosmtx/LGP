@@ -10,7 +10,7 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:id="@+id/imageView"
         android:src="@mipmap/imglogo"
         android:layout_alignRight="@+id/editText_user"
@@ -19,8 +19,8 @@
         android:layout_alignStart="@+id/editText_user" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/editText_user"
@@ -31,8 +31,8 @@
         android:gravity="center" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
         android:inputType="numberPassword"
         android:ems="10"
         android:id="@+id/editText_password"
@@ -45,8 +45,8 @@
 
     <Button
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:text="Entrar"
         android:id="@+id/login_button"
         android:layout_below="@+id/editText_password"
