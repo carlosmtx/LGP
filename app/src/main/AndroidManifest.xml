@@ -48,6 +48,12 @@
             android:noHistory="true">
         </activity>
         <activity
+            android:name=".browser_activity"
+            android:label="@string/title_activity_login_activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:noHistory="true">
+        </activity>
+        <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu_activity"
             android:theme="@style/AppTheme">
