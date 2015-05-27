@@ -16,6 +16,7 @@ import java.util.zip.ZipFile;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -86,10 +87,9 @@ public class MainActivity extends Activity
         {
             ProgressBar bar = (ProgressBar) findViewById(R.id.progressExtraction);
             final TextView text = (TextView) findViewById(R.id.textViewInfo);
+            text.setTextColor(Color.WHITE);
 
-            //boolean downloadSuccess = downloadScene(bar, text);
-
-            boolean downloadSuccess = true;
+            boolean downloadSuccess = downloadScene(bar, text);
             if(downloadSuccess)
             {
                 runOnUiThread(new Runnable() {
