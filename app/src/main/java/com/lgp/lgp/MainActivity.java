@@ -59,6 +59,9 @@ public class MainActivity extends Activity
         // Enable metaio SDK debug log messages based on build configuration
         //MetaioDebug.enableLogging(BuildConfig.DEBUG);
 
+
+
+
         // extract all the assets
         mTask = new AssetsExtracter();
         mTask.execute(0);
@@ -84,8 +87,9 @@ public class MainActivity extends Activity
             ProgressBar bar = (ProgressBar) findViewById(R.id.progressExtraction);
             final TextView text = (TextView) findViewById(R.id.textViewInfo);
 
-            boolean downloadSuccess = downloadScene(bar, text);
+            //boolean downloadSuccess = downloadScene(bar, text);
 
+            boolean downloadSuccess = true;
             if(downloadSuccess)
             {
                 runOnUiThread(new Runnable() {
