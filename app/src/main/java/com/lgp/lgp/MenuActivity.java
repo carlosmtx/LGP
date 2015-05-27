@@ -6,6 +6,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.metaio.sdk.ARELActivity;
@@ -16,12 +18,19 @@ import java.io.File;
 public class MenuActivity extends ActionBarActivity {
 
     private boolean backPressed;
+    Person person;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         backPressed = false;
+
+        person = Person.getInstance();
+
+        updateValues();
+
+
 
 
         findViewById(R.id.ar_button).setOnClickListener(new View.OnClickListener() {
@@ -39,6 +48,21 @@ public class MenuActivity extends ActionBarActivity {
 
     }
 
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        updateValues();
+    }
+
+    public void updateValues()
+    {
+        TextView name = (TextView) findViewById(R.id.name_text);
+        name.setText(person.getName());
+
+        TextView saldo = (TextView) findViewById(R.id.Main_account_balance_value);
+        saldo.setText(Integer.toString(person.getSaldo()));
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

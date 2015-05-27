@@ -59,6 +59,9 @@ public class MainActivity extends Activity
         // Enable metaio SDK debug log messages based on build configuration
         //MetaioDebug.enableLogging(BuildConfig.DEBUG);
 
+
+
+
         // extract all the assets
         mTask = new AssetsExtracter();
         mTask.execute(0);

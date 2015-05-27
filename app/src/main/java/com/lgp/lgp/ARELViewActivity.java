@@ -16,7 +16,7 @@ public class ARELViewActivity extends ARELActivity
     protected void onStart() {
         super.onStart();
 
-        mWebView.addJavascriptInterface(new Person() , "person");
+        mWebView.addJavascriptInterface(new Comunication() , "person");
 
     }
 
@@ -27,26 +27,27 @@ public class ARELViewActivity extends ARELActivity
         return R.layout.template;
     }
 
-    private class Person {
-        public int saldo = 1000;
+    private class Comunication {
+        Person person = Person.getInstance();
 
         @JavascriptInterface
         public String getNome(){
-            return "Joao";
+           return person.getName();
         }
 
         @JavascriptInterface
         public double getSaldo(){
-            return saldo;
+            return person.getSaldo();
         }
 
         @JavascriptInterface
         public void changeSaldo(int s)
         {
             MetaioDebug.log(Log.ERROR, "Javascript saldoRecebido: " + s);
-            saldo = s;
+            person.setSaldo(s);
 
-            MetaioDebug.log(Log.ERROR, "Javascript Saldo Alterado: " + saldo);
+
+            MetaioDebug.log(Log.ERROR, "Javascript Saldo Alterado: " + person.getSaldo());
         }
 
         @JavascriptInterface
