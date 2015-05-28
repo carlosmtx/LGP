@@ -12,15 +12,16 @@
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:id="@+id/imageView"
-        android:src="@mipmap/imglogo"
+        android:src="@mipmap/logo_final"
         android:layout_alignRight="@+id/editText_user"
         android:layout_alignEnd="@+id/editText_user"
         android:layout_alignLeft="@+id/editText_user"
-        android:layout_alignStart="@+id/editText_user" />
+        android:layout_alignStart="@+id/editText_user"
+        android:layout_marginBottom="20dp" />
 
     <EditText
-        android:layout_width="300dp"
-        android:layout_height="30dp"
+        android:layout_width="350dp"
+        android:layout_height="35dp"
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/editText_user"
@@ -31,8 +32,8 @@
         android:gravity="center" />
 
     <EditText
-        android:layout_width="300dp"
-        android:layout_height="30dp"
+        android:layout_width="350dp"
+        android:layout_height="35dp"
         android:inputType="numberPassword"
         android:ems="10"
         android:id="@+id/editText_password"
@@ -52,7 +53,8 @@
         android:layout_below="@+id/editText_password"
         android:layout_centerHorizontal="true"
         android:background="@android:color/transparent"
-        android:textColor="#ffffffff" />
+        android:textColor="#ffffffff"
+        android:textSize="@dimen/abc_text_size_large_material" />
 
 
 </RelativeLayout>

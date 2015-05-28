@@ -261,7 +261,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginTop="85dp"
-        fab:fab_icon="@drawable/ic_fab_star"
+        fab:fab_icon="@drawable/eye"
         fab:fab_colorNormal="#17fffd"
         fab:fab_colorPressed="#17fffd"
 

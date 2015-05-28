@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LGP</string>
+    <string name="app_name">AR Banking</string>
     <string name="title_activity_login_activity">login_activity</string>
     <string name="title_activity_menu_activity">AR Banking</string>
 </resources>
