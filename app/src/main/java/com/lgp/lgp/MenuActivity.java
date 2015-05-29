@@ -37,7 +37,7 @@ public class MenuActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 File dir = Environment.getExternalStorageDirectory();
-                final File arelConfigFilePath = new File(dir.getAbsolutePath() + "/lgp/index.xml");
+                final File arelConfigFilePath = new File(dir.getAbsolutePath() + "/ar_banking/index.xml");
                 MetaioDebug.log("AREL config to be passed to intent: " + arelConfigFilePath.getPath());
                 Intent intent = new Intent(getApplicationContext(), ARELViewActivity.class);
                 intent.putExtra(getPackageName()+ ARELActivity.INTENT_EXTRA_AREL_SCENE, arelConfigFilePath);

@@ -89,6 +89,11 @@ public class MainActivity extends Activity
             final TextView text = (TextView) findViewById(R.id.textViewInfo);
             text.setTextColor(Color.WHITE);
 
+            //create new folder
+            File folder = new File(Environment.getExternalStorageDirectory() + "/ar_banking");
+
+            folder.mkdir();
+
             boolean downloadSuccess = downloadScene(bar, text);
             if(downloadSuccess)
             {
@@ -102,11 +107,13 @@ public class MainActivity extends Activity
                 unpackZip(bar);
 
                 //Delete zip after unpacking
-                File file = new File(Environment.getExternalStorageDirectory() + "/lgp/current.zip");
+                File file = new File(Environment.getExternalStorageDirectory() + "/ar_banking/current.zip");
                 file.delete();
             }
 
             return true;
+
+
         }
 
         @Override
@@ -173,7 +180,7 @@ public class MainActivity extends Activity
                 InputStream is = response.getEntity().getContent();
                 long total = response.getEntity().getContentLength();
 
-                FileOutputStream fos = new FileOutputStream(new File(Environment.getExternalStorageDirectory() + "/lgp", "current.zip"));
+                FileOutputStream fos = new FileOutputStream(new File(Environment.getExternalStorageDirectory() + "/ar_banking", "current.zip"));
 
                 int read;
                 long completed = 0;
@@ -230,8 +237,8 @@ public class MainActivity extends Activity
         // Unpacks a zip file
         private boolean unpackZip(ProgressBar bar)
         {
-            String destPath = Environment.getExternalStorageDirectory() + "/lgp";
-            String zipPath = Environment.getExternalStorageDirectory() + "/lgp/current.zip";
+            String destPath = Environment.getExternalStorageDirectory() + "/ar_banking";
+            String zipPath = Environment.getExternalStorageDirectory() + "/ar_banking/current.zip";
 
             byte[] buffer = new byte[1024];
 
