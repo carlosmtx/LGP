@@ -257,13 +257,13 @@
 
     <com.getbase.floatingactionbutton.FloatingActionButton
         android:id="@+id/ar_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="366dp"
+        android:layout_height="493dp"
         android:layout_gravity="end"
         android:layout_marginTop="85dp"
         fab:fab_icon="@drawable/eye"
-        fab:fab_colorNormal="#17fffd"
-        fab:fab_colorPressed="#17fffd"
+        fab:fab_colorNormal="#fffff9fc"
+        fab:fab_colorPressed="#ff009788"
 
         />
 

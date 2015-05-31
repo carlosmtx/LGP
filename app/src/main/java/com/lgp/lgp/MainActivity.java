@@ -94,7 +94,7 @@ public class MainActivity extends Activity
 
             folder.mkdir();
 
-            boolean downloadSuccess = downloadScene(bar, text);
+            boolean downloadSuccess  = downloadScene(bar, text);
             if(downloadSuccess)
             {
                 runOnUiThread(new Runnable() {
