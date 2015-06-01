@@ -22,7 +22,7 @@
 
     <EditText
         android:layout_width="350dp"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/editText_user"
@@ -33,7 +33,7 @@
 
     <EditText
         android:layout_width="350dp"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:inputType="numberPassword"
         android:ems="10"
         android:id="@+id/editText_password"

@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -26,30 +25,23 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.metaio.sdk.ARELActivity;
-import com.metaio.sdk.MetaioDebug;
-import com.metaio.tools.io.AssetsManager;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class MainActivity extends Activity
 {
     //Task that will extract all the assets
     private AssetsExtracter mTask;
-    public ProgressBar bar;
-    public Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -74,7 +66,7 @@ public class MainActivity extends Activity
      */
     private class AssetsExtracter extends AsyncTask<Integer, Integer, Boolean>
     {
-        private static final String URL = "http://178.62.167.215/channel/canal1/current";
+        private static final String URL = "http://178.62.167.215/channel/Canal1/current";
         private static final String SETTINGS_NAME = "lgp";
 
         @Override
@@ -147,13 +139,17 @@ public class MainActivity extends Activity
             String id = null;
 
             //Get metadata
-            HttpResponse metadata = getData(URL);
+            List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+            parameters.add(new BasicNameValuePair("as", "json"));
+            HttpResponse metadata = getData(URL, parameters);
 
             try
             {
                 String metadataString = EntityUtils.toString(metadata.getEntity());
-                JSONObject json = new JSONObject(metadataString);
+                JSONObject json = new JSONArray(metadataString).getJSONObject(0);
+                Log.d("coiso", "DATA: " + json.toString());
                 id = (String) json.get("id");
+
             }
             catch(Exception e) { e.printStackTrace(); }
 
@@ -168,9 +164,7 @@ public class MainActivity extends Activity
                 }
             });
 
-            List<NameValuePair> parameters = new ArrayList<NameValuePair>();
-            parameters.add(new BasicNameValuePair("as", "zip"));
-            HttpResponse response = getData(URL, parameters);
+            HttpResponse response = getData(URL);
 
             if(response == null)
                 return false;
@@ -225,6 +219,7 @@ public class MainActivity extends Activity
                 if(parameters != null)
                     url += "?" + URLEncodedUtils.format(parameters, "utf-8");
 
+                Log.d("coiso", "URL: " + url);
                 URI uri = new URI(url);
                 HttpUriRequest request = new HttpGet(uri);
                 response = httpClient.execute(request);
