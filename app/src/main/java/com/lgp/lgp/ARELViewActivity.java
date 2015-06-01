@@ -2,6 +2,7 @@
 package com.lgp.lgp;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
@@ -12,11 +13,23 @@ import com.metaio.sdk.MetaioDebug;
 public class ARELViewActivity extends ARELActivity
 {
 
+    private static final int SPLASHDURATION = 5;
+
     @Override
     protected void onStart() {
         super.onStart();
 
-        mWebView.addJavascriptInterface(new Comunication() , "person");
+
+        Runnable splashAction = new Runnable(){
+            @Override
+            public void run() {
+                findViewById(R.id.customSplash).setVisibility(View.GONE);
+                findViewById(R.id.customFooter).setVisibility(View.VISIBLE);
+            }
+        };
+
+        Handler handler = new Handler();
+        handler.postDelayed(splashAction, SPLASHDURATION * 1000);
 
     }
 

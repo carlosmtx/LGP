@@ -254,15 +254,19 @@
 
     </LinearLayout>
 
-
-    <com.getbase.floatingactionbutton.FloatingActionButton
+    <ImageButton
         android:id="@+id/ar_button"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_gravity="end"
         android:layout_marginTop="85dp"
-        fab:fab_colorNormal="#19FFFF"
-        fab:fab_icon="@drawable/eye"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/eye"
+        android:scaleType="fitXY"
+        android:padding="15dp"
+        android:elevation="5dp"
+        android:background="@drawable/ar_button_bg"
+
     />
 
 </FrameLayout>
