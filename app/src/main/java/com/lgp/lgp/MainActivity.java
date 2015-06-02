@@ -19,7 +19,6 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.view.Gravity;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -147,7 +146,6 @@ public class MainActivity extends Activity
             {
                 String metadataString = EntityUtils.toString(metadata.getEntity());
                 JSONObject json = new JSONArray(metadataString).getJSONObject(0);
-                Log.d("coiso", "DATA: " + json.toString());
                 id = (String) json.get("id");
 
             }
@@ -219,7 +217,6 @@ public class MainActivity extends Activity
                 if(parameters != null)
                     url += "?" + URLEncodedUtils.format(parameters, "utf-8");
 
-                Log.d("coiso", "URL: " + url);
                 URI uri = new URI(url);
                 HttpUriRequest request = new HttpGet(uri);
                 response = httpClient.execute(request);
