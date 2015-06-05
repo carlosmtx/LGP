@@ -6,7 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -19,6 +21,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.Gravity;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -135,7 +138,9 @@ public class MainActivity extends Activity
             SharedPreferences settings = getSharedPreferences(SETTINGS_NAME, MODE_PRIVATE);
 
             String currentID = settings.getString("id", null);
+            String currentDate = settings.getString("date", null);
             String id = null;
+            String date = null;
 
             //Get metadata
             List<NameValuePair> parameters = new ArrayList<NameValuePair>();
@@ -147,11 +152,15 @@ public class MainActivity extends Activity
                 String metadataString = EntityUtils.toString(metadata.getEntity());
                 JSONObject json = new JSONArray(metadataString).getJSONObject(0);
                 id = (String) json.get("id");
+                date = (String) json.get("updatedAt");
+
+
 
             }
             catch(Exception e) { e.printStackTrace(); }
 
-            if(id == null || id.equals(currentID))
+
+            if(id == null || date == null || (id.equals(currentID) && date.equals(currentDate)))
                 return false;
 
             //If data is recent, get data
@@ -194,6 +203,8 @@ public class MainActivity extends Activity
             //After downloading new file, update current id
             SharedPreferences.Editor editor = settings.edit();
             editor.putString("id", id);
+            editor.putString("date", date);
+
             editor.commit();
 
             return true;
