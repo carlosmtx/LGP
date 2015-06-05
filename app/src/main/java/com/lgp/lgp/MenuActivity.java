@@ -34,13 +34,8 @@ public class MenuActivity extends ActionBarActivity {
         findViewById(R.id.ar_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File dir = Environment.getExternalStorageDirectory();
-                final File arelConfigFilePath = new File(dir.getAbsolutePath() + "/ar_banking/index.xml");
-                MetaioDebug.log("AREL config to be passed to intent: " + arelConfigFilePath.getPath());
-                Intent intent = new Intent(getApplicationContext(), ARELViewActivity.class);
-                intent.putExtra(getPackageName()+ ARELActivity.INTENT_EXTRA_AREL_SCENE, arelConfigFilePath);
-
-                startActivity(intent);
+                Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(mainIntent);
             }
         });
 

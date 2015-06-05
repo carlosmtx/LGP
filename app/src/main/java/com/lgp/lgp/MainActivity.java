@@ -28,6 +28,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.metaio.sdk.ARELActivity;
+import com.metaio.sdk.MetaioDebug;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -116,7 +119,12 @@ public class MainActivity extends Activity
             if (result)
             {
                 // Start authentication screen
-                Intent intent = new Intent(getApplicationContext(), login_activity.class);
+                File dir = Environment.getExternalStorageDirectory();
+                final File arelConfigFilePath = new File(dir.getAbsolutePath() + "/ar_banking/index.xml");
+                MetaioDebug.log("AREL config to be passed to intent: " + arelConfigFilePath.getPath());
+                Intent intent = new Intent(getApplicationContext(), ARELViewActivity.class);
+                intent.putExtra(getPackageName()+ ARELActivity.INTENT_EXTRA_AREL_SCENE, arelConfigFilePath);
+
                 startActivity(intent);
 
             }

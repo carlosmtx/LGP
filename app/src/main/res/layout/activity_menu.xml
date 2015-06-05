@@ -263,7 +263,7 @@
         android:layout_marginRight="5dp"
         android:src="@drawable/eye"
         android:scaleType="fitXY"
-        android:padding="15dp"
+        android:padding="13dp"
         android:elevation="5dp"
         android:background="@drawable/ar_button_bg"
 

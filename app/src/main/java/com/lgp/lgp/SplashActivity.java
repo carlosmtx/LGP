@@ -22,8 +22,8 @@ public class SplashActivity extends Activity {
                 } catch (InterruptedException e) {
 
                 }finally {
-                    Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(mainIntent);
+                    Intent loginIntent = new Intent(getApplicationContext(), login_activity.class);
+                    startActivity(loginIntent);
                 }
             }
         };
